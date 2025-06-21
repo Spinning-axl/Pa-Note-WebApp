@@ -65,7 +65,7 @@ namespace Pa_Note_WebApp.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("UserId"); // ✅ FIXED KEY
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

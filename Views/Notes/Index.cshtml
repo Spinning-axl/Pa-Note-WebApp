@@ -5,19 +5,19 @@
 }
 
 <h2>My Notes</h2>
-<a asp-action="Create" class="btn btn-success mb-3">Create New Note</a>
+<a asp-action="Create" class="btn" style="background-color:#d48459; color:#fff; margin-bottom:1rem;">Create New Note</a>
 <div class="row">
     @foreach (var note in Model)
     {
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card mb-4" style="background-color:#f2dfd2; border:none; border-radius:12px;">
                 <div class="card-body">
                     <h5 class="card-title">@note.Title</h5>
                     <p class="card-text">@note.Content</p>
                     <p class="card-text"><small class="text-muted">@note.CreatedAt.ToString("g")</small></p>
-                    <a asp-action="Edit" asp-route-id="@note.NoteId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@note.NoteId" class="btn btn-sm" style="background-color:#ed9548; color:#fff;">Edit</a>
                     <form method="post" asp-action="Delete" asp-route-id="@note.NoteId" style="display:inline;">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 </div>
             </div>

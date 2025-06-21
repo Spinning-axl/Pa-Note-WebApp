@@ -1,11 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Welcome to Pa-Note WebApp";
 }
-<div class="text-center mt-5">
-    <h1 class="display-4">Welcome to Pa-Note WebApp</h1>
+<div class="text-center mt-5" style="background-color:#fff5ed; padding: 2rem; border-radius: 12px; color: #222;">
+    <h1 class="display-4" style="color:#222;">Welcome to Pa-Note WebApp</h1>
     <p>Your personal note-taking application.</p>
     <p>
-        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary">Login</a>
-        <a asp-controller="Account" asp-action="Register" class="btn btn-outline-success">Register</a>
+        <a asp-controller="Account" asp-action="Login" class="btn" style="background-color:#ed9548; color:#fff;">Login</a>
+        <a asp-controller="Account" asp-action="Register" class="btn" style="background-color:#d48459; color:#fff;">Register</a>
     </p>
+    <div class="mt-4">
+        <img src="https://thumbs.dreamstime.com/b/bald-cartoon-man-yellow-glasses-holding-clipboard-transparent-background-professional-use-illustration-features-361184604.jpg"
+             alt="Cartoon Man with Clipboard" style="max-width: 250px; border-radius: 12px;" />
+    </div>
 </div>
