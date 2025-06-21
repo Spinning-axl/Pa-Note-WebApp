@@ -4,7 +4,7 @@ using Pa_Note_WebApp.Models;
 using System.Linq;
 using BCrypt.Net;
 
-namespace NoteTakingApp.Controllers
+namespace Pa_Note_WebApp.Controllers
 {
     public class AccountController : Controller
     {
@@ -54,7 +54,7 @@ namespace NoteTakingApp.Controllers
             var user = _context.Users.FirstOrDefault(u => u.Username == username);
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
-                HttpContext.Session.SetInt32("User    Id", user.UserId);
+                HttpContext.Session.SetInt32("UserId", user.UserId); // ✅ FIXED KEY
                 return RedirectToAction("Index", "Notes");
             }
 
@@ -64,7 +64,7 @@ namespace NoteTakingApp.Controllers
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("User    Id");
+            HttpContext.Session.Remove("UserId"); // ✅ FIXED KEY
             return RedirectToAction("Login");
         }
     }

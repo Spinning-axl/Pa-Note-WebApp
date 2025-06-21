@@ -2,12 +2,20 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Register</h2>
-<form method="post">
-    <div asp-validation-summary="All"></div>
-    <label>Username:</label>
-    <input name="username" class="form-control" required />
-    <label>Password:</label>
-    <input name="password" type="password" class="form-control" required />
-    <button type="submit" class="btn btn-success mt-2">Register</button>
-</form>
+<div class="d-flex justify-content-center align-items-center login-container" style="min-height: 80vh;">
+    <div class="login-card">
+        <h3 class="text-center mb-4">Register</h3>
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input name="username" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-success w-100">Register</button>
+        </form>
+    </div>
+</div>

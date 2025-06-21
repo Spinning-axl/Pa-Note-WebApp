@@ -16,21 +16,31 @@ namespace Pa.Controllers
 
         public IActionResult Index()
         {
-            var userId = HttpContext.Session.GetInt32("User    Id");
+            var userId = HttpContext.Session.GetInt32("UserId"); // ✅ FIXED
+            if (!userId.HasValue)
+                return RedirectToAction("Login", "Account");
+
             var notes = _context.Notes.Where(n => n.UserId == userId).ToList();
             return View(notes);
         }
 
         [HttpGet]
-        public IActionResult Create() => View();
+        public IActionResult Create()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId"); // ✅ Ensure user is logged in
+            if (!userId.HasValue)
+                return RedirectToAction("Login", "Account");
+
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Create(Note note)
         {
-            var userId = HttpContext.Session.GetInt32("User    Id");
+            var userId = HttpContext.Session.GetInt32("UserId"); // ✅ FIXED
             if (!userId.HasValue)
             {
-                return BadRequest("User    Id is not set in the session. Please log in.");
+                return BadRequest("UserId is not set in the session. Please log in.");
             }
 
             note.UserId = userId.Value;
@@ -44,12 +54,10 @@ namespace Pa.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Console.WriteLine($"Editing note with ID: {id}"); // Log the ID being edited
-            var note = _context.Notes.FirstOrDefault(n => n.NoteId == id); // Use FirstOrDefault to find the note
+            var note = _context.Notes.FirstOrDefault(n => n.NoteId == id);
             if (note == null)
             {
-                Console.WriteLine("Note not found."); // Log if the note is not found
-                return NotFound(); // Return a 404 if the note is not found
+                return NotFound();
             }
             return View(note);
         }
